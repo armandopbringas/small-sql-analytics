@@ -31,3 +31,15 @@ SELECT
 FROM montos_cte
 WHERE row_num <= 10
 GROUP BY tipo_transaccion;
+
+-- queries/promedios_montos_por_tipo.sql
+
+-- ✅ Agrega filtros para reducir volumen de datos
+-- ✅ No uses operaciones pesadas si puedes precalcular
+
+SELECT
+    tipo_transaccion,
+    ROUND(AVG(monto), 2) AS promedio_monto
+FROM transacciones
+WHERE fecha_transaccion >= '2023-01-01'
+GROUP BY tipo_transaccion;

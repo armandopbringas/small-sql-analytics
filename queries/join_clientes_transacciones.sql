@@ -18,3 +18,19 @@ FROM
   clientes c
 INNER JOIN
   transacciones t ON c.id_cliente = t.id_cliente;
+
+-- queries/join_clientes_transacciones.sql
+
+-- ✅ Evita SELECT * para mejorar rendimiento
+-- ✅ Normaliza nombres y pon alias claros
+
+SELECT
+    c.id AS cliente_id,
+    c.nombre AS nombre_cliente,
+    t.id AS transaccion_id,
+    t.monto,
+    t.tipo_transaccion,
+    t.fecha_transaccion
+FROM clientes c
+JOIN transacciones t ON c.id = t.cliente_id
+WHERE t.fecha_transaccion >= '2023-01-01';
